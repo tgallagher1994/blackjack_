@@ -15,12 +15,17 @@ def startgame():
     """Starts the game, shuffles deck, draws two cards, and displays them."""
     deck1 = Deck()
     deck1.shuffle()
-    card1 = deck1.draw()
-    card2 = deck1.draw()
+    userCard1 = deck1.draw()
+    userCard2 = deck1.draw()
     
     # Display in GUI
-    output_label.config(text=f"Card 1: {card1}\nCard 2: {card2}")
+    output_label.config(text=f"Card 1: {userCard1}\nCard 2: {userCard2}")
 
+def reshuffle_reset():
+    #places both cards back into the deck and reshuffles
+    deck1.cards.append(userCard1)
+    deck1.cards.append(userCard2)
+    deck1.shuffle()
 # Create and pack start button
 start_button = ttk.Button(root, text="Start Game", command=startgame)
 start_button.pack(pady=20)
